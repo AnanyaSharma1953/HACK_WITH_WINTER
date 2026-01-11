@@ -130,10 +130,6 @@ SignalLock is an unsupervised machine learning platform that continuously learns
 │ (React) │
 └──────────────────────────────┘
 
-yaml
-Copy code
-
----
 
 ## 🔄 Data Flow Diagram (DFD)
 
@@ -160,10 +156,6 @@ Copy code
 ▼
 [Alerts + Dashboard]
 
-yaml
-Copy code
-
----
 
 ## 🔁 System Flowchart
 
@@ -193,10 +185,7 @@ Visualize Health Score
 ▼
 End
 
-yaml
-Copy code
 
----
 
 ## ⚙ How the System Works
 
