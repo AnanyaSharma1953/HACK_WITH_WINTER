@@ -120,10 +120,7 @@ Health Score Engine
 ▼
 Alerts + Dashboard
 
-yaml
-Copy code
 
----
 
 ## 🔁 System Flow
 
@@ -153,10 +150,7 @@ Visualize Health Score
 ▼
 End
 
-yaml
-Copy code
 
----
 
 ## ⚙ How the System Works
 
@@ -234,10 +228,7 @@ SignalLock/
 ├── demo/ # Demo videos or recordings
 └── README.md
 
-yaml
-Copy code
 
----
 
 ## 🧪 Prototype
 
@@ -251,7 +242,7 @@ Copy code
 ## 🎥 Demo
 
 Demo video link:  
-[https://drive.google.com/your-demo-link](https://youtu.be/6HwBKlUHTRU)
+[[https://drive.google.com/your-demo-link](https://youtu.be/6HwBKlUHTRU)](https://youtu.be/6HwBKlUHTRU)
 
 ---
 
