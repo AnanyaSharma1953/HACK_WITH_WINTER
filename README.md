@@ -90,10 +90,7 @@ Alert Engine (Email/Webhooks)
 ▼
 Web Dashboard (React)
 
-yaml
-Copy code
 
----
 
 ## 🔄 Data Flow
 
