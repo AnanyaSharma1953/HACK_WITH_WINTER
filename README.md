@@ -1,18 +1,25 @@
-SignalLock
-
+# SignalLock  
 AI-Powered Early Warning System for Silent Infrastructure Failures
 
-Hackathon
+---
 
-Hack The Winter – Angry Bird Edition
+## Hackathon  
+**Hack The Winter – Angry Bird Edition**
 
-Team
-Name	Role
-Shruti	System Architect & Backend Lead
-Anirudh	Machine Learning Engineer
-Ananya	Frontend Engineer
-Rohan	Data & Simulation Engineer
-Overview
+---
+
+## Team
+
+| Name   | Role |
+|--------|------|
+| Shruti | System Architect & Backend Lead |
+| Anirudh | Machine Learning Engineer |
+| Ananya | Frontend Engineer |
+| Rohan | Data & Simulation Engineer |
+
+---
+
+## Overview
 
 SignalLock is an AI-driven early warning platform that detects silent, gradual failures in infrastructure systems such as water pumps, electrical panels, servers, motors, HVAC units, and UPS systems — before breakdowns occur.
 
@@ -20,223 +27,241 @@ Most infrastructure failures are not sudden. They develop slowly through rising 
 
 SignalLock learns what “normal” looks like for every system and flags behavioral drift — the earliest indicator of failure.
 
-“We don’t wait for systems to fail. We detect when they start behaving differently.”
+> We don’t wait for systems to fail. We detect when they start behaving differently.
 
-Problem Statement
+---
+
+## Problem Statement
 
 Modern infrastructure relies on machines that run continuously. Their failures cause downtime, financial loss, safety risks, and service disruption.
 
 Most failures emerge gradually as:
-
-Rising vibration in motors
-
-Irregular power consumption
-
-Thermal drift
-
-Network latency instability
+- Rising vibration in motors  
+- Irregular power consumption  
+- Thermal drift  
+- Network latency instability  
 
 Current monitoring systems:
-
-Use static thresholds
-
-Require expensive proprietary hardware
-
-Depend on manual inspection
-
-Detect issues only after damage begins
+- Use static thresholds  
+- Require expensive proprietary hardware  
+- Depend on manual inspection  
+- Detect issues only after damage begins  
 
 There is no affordable, learning-based system that works with small, noisy, unlabeled data.
 
-Why Existing Solutions Fall Short
-Existing Approach	Limitation
-Rule-based alerts	Miss gradual degradation
-Industrial IoT tools	Too costly for small institutions
-Dashboards	No intelligence
-Predictive tools	Require labeled failure data
+---
 
-Key Gap:
-No accessible AI system that can learn system-specific behavior and detect early drift automatically.
+## Why Existing Solutions Fall Short
 
-Proposed Solution
+| Existing Approach | Limitation |
+|------------------|------------|
+| Rule-based alerts | Miss gradual degradation |
+| Industrial IoT tools | Too costly for small institutions |
+| Dashboards | No intelligence |
+| Predictive tools | Require labeled failure data |
+
+**Key Gap:** No accessible AI system that can learn system-specific behavior and detect early drift automatically.
+
+---
+
+## Proposed Solution
 
 SignalLock is an unsupervised machine learning platform that continuously learns system behavior and detects anomalies relative to its own historical baseline.
 
-Core Capabilities
+### Core Capabilities
+- Learns normal behavior patterns  
+- Detects early behavioral drift  
+- Assigns anomaly confidence scores  
+- Explains which signals changed  
+- Sends proactive alerts  
+- Visualizes system health  
 
-Learns normal behavior patterns
+---
 
-Detects early behavioral drift
+## System Architecture
 
-Assigns anomaly confidence scores
+### High-Level Architecture Diagram
 
-Explains which signals changed
++-------------------+
+| Data Source |
+| (Sensors / CSV) |
++---------+---------+
+|
+v
++-------------------+
+| Ingestion API |
+| (FastAPI) |
++---------+---------+
+|
+v
++-------------------+
+| Message Queue |
+| (Redis Streams) |
++---------+---------+
+|
+v
++-------------------+
+| Time-Series DB |
+| (PostgreSQL) |
++---------+---------+
+|
+v
++-------------------+
+| ML Engine |
+| Autoencoder + IF |
+| Drift Detection |
++---------+---------+
+|
+v
++-------------------+
+| Anomaly Scorer |
++---------+---------+
+|
+v
++-------------------+
+| Alert Engine |
++---------+---------+
+|
+v
++-------------------+
+| Web Dashboard |
+| (React) |
++-------------------+
 
-Sends proactive alerts
+yaml
+Copy code
 
-Visualizes system health
+---
 
-System Architecture
-High-Level Architecture Diagram
-┌──────────────┐
-│ Data Source  │  (Sensors / CSV / Logs)
-└──────┬───────┘
-       │
-       ▼
-┌──────────────────┐
-│ Ingestion API    │  (FastAPI)
-└──────┬───────────┘
-       │
-       ▼
-┌──────────────────┐
-│ Message Queue    │  (Redis Streams)
-└──────┬───────────┘
-       │
-       ▼
-┌──────────────────┐
-│ Time-Series DB   │  (PostgreSQL / Timescale)
-└──────┬───────────┘
-       │
-       ▼
-┌──────────────────┐
-│ ML Engine        │
-│ • Autoencoder    │
-│ • IsolationForest│
-│ • Drift Detector │
-└──────┬───────────┘
-       │
-       ▼
-┌──────────────────┐
-│ Anomaly Scorer   │
-└──────┬───────────┘
-       │
-       ▼
-┌──────────────────┐
-│ Alert Engine     │
-└──────┬───────────┘
-       │
-       ▼
-┌──────────────────┐
-│ Web Dashboard    │
-└──────────────────┘
+## Data Flow Diagram (DFD)
 
-Data Flow Diagram (DFD)
 [Sensor Data]
-      ↓
-[Data Ingestion API]
-      ↓
+|
+v
+[Ingestion API]
+|
+v
 [Streaming Queue]
-      ↓
+|
+v
 [Preprocessing Layer]
-      ↓
+|
+v
 [Baseline Model Training]
-      ↓
+|
+v
 [Anomaly Detection]
-      ↓
+|
+v
 [Health Score Engine]
-      ↓
+|
+v
 [Alerts + Dashboard]
 
-System Flowchart
+yaml
+Copy code
+
+---
+
+## System Flowchart
+
 Start
-  ↓
+|
+v
 Collect Sensor Data
-  ↓
+|
+v
 Store in Database
-  ↓
+|
+v
 Train Baseline Model
-  ↓
+|
+v
 Detect Drift & Anomalies
-  ↓
+|
+v
 Predict Failure Risk
-  ↓
+|
+v
 Trigger Alerts
-  ↓
+|
+v
 Visualize Health Score
-  ↓
+|
+v
 End
 
-How the System Works
+yaml
+Copy code
 
-Sensors or CSV feeds send time-series data
+---
 
-FastAPI ingestion service receives data
+## How the System Works
 
-Data is streamed via Redis
+1. Sensors or CSV feeds send time-series data  
+2. FastAPI ingestion service receives data  
+3. Data is streamed via Redis  
+4. Stored in PostgreSQL  
+5. Autoencoder learns normal patterns  
+6. Drift detector monitors slow degradation  
+7. Anomaly scorer assigns confidence score  
+8. Alert engine triggers early warnings  
+9. Dashboard visualizes health and trends  
 
-Stored in PostgreSQL / TimescaleDB
+---
 
-Autoencoder learns normal patterns
+## Scalability and Reliability
 
-Drift detector monitors slow degradation
+### Growth Handling
 
-Anomaly scorer assigns confidence score
+| Component | Scaling Strategy |
+|----------|------------------|
+| Ingestion API | Horizontal scaling via Docker |
+| Queue | Redis cluster |
+| Database | Partitioned time-series |
+| ML Engine | Worker pool |
+| Dashboard | CDN hosting |
+| Alerts | Retry and debouncing |
 
-Alert engine triggers early warnings
+### Failure Prevention
 
-Dashboard visualizes health & trends
+- Queue buffering for traffic spikes  
+- Stateless services for failover  
+- Model fallback rules  
+- Alert deduplication  
+- Batched database writes  
 
-Scalability & Reliability
-Growth Handling
-Component	Scaling Strategy
-Ingestion API	Horizontal scaling via Docker
-Queue	Redis cluster
-Database	TimescaleDB sharding
-ML Engine	Worker pool
-Dashboard	CDN hosting
-Alerts	Retry + debouncing
-Failure Prevention
+---
 
-Queue buffering for traffic spikes
+## Team Contributions
 
-Stateless services for failover
+### Shruti — Backend and Architecture
+- System design  
+- FastAPI ingestion API  
+- Database schema  
+- Docker deployment  
 
-Model fallback rules
+### Anirudh — Machine Learning
+- Autoencoder model  
+- Drift detection  
+- Anomaly scoring  
+- Risk prediction  
 
-Alert deduplication
+### Ananya — Frontend
+- React dashboard  
+- Health score UI  
+- Anomaly charts  
 
-Database write batching
+### Rohan — Data and Simulation
+- Sensor simulator  
+- Failure scenario generator  
+- Dataset preparation  
 
-Team Contributions
-Shruti — Backend & Architecture
+---
 
-System design
+## Repository Structure
 
-FastAPI ingestion API
-
-Database schema
-
-Docker deployment
-
-Anirudh — Machine Learning
-
-Autoencoder model
-
-Drift detection
-
-Anomaly scoring
-
-Risk prediction
-
-Ananya — Frontend
-
-React dashboard
-
-Health score UI
-
-Anomaly charts
-
-Rohan — Data & Simulation
-
-Sensor simulator
-
-Failure scenario generator
-
-Dataset preparation
-
-Repository Structure
 SignalLock/
-│
 ├── backend/
 ├── ml/
 ├── simulator/
@@ -247,49 +272,49 @@ SignalLock/
 ├── demo/
 └── README.md
 
-Prototype
+yaml
+Copy code
 
-FastAPI ingestion service
+---
 
-ML anomaly detector
+## Prototype
 
-Sensor simulator
+- FastAPI ingestion service  
+- ML anomaly detector  
+- Sensor simulator  
+- Minimal dashboard  
 
-Minimal dashboard
+---
 
-Demo
+## Demo
 
-Demo Video Link: (Add link here)
+Demo video link: Add your Drive or YouTube link here
 
-Research Notes
+---
 
-Predictive Maintenance using Machine Learning
+## Research Notes
 
-Time-Series Anomaly Detection
+- Predictive Maintenance using Machine Learning  
+- Time-Series Anomaly Detection  
+- Drift Detection Algorithms  
+- Autoencoders for Fault Detection  
 
-Drift Detection Algorithms
+---
 
-Autoencoders for Fault Detection
+## Conclusion
 
-Conclusion
-
-SignalLock is designed as a real-world, scalable AI platform that prevents infrastructure failures before they happen.
+SignalLock is a real-world, scalable AI platform that prevents infrastructure failures before they happen.
 
 This project demonstrates:
+- Deep system design  
+- Real-world relevance  
+- AI-driven intelligence  
+- Production-grade architecture  
+- Scalable engineering  
 
-Deep system design
+---
 
-Real-world relevance
+## Built By
 
-AI-driven intelligence
-
-Production-grade architecture
-
-Scalable engineering
-
-Built By
-
-Team SignalLock
+Team SignalLock  
 Shruti • Anirudh • Ananya • Rohan
-
-If you paste this README into GitHub and follow proper branching + PR workflow, your submission will look professional, original, and startup-grade.
