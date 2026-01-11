@@ -232,7 +232,7 @@ Copy code
 ## 🎥 Demo
 
 Demo video link:  
-https://drive.google.com/your-demo-link
+[https://drive.google.com/your-demo-link](https://youtu.be/6HwBKlUHTRU)
 
 ---
 
