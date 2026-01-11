@@ -104,10 +104,7 @@ Alert Engine
 ▼
 Web Dashboard (React)
 
-yaml
-Copy code
 
----
 
 ## 🔄 Data Flow
 
@@ -134,19 +131,13 @@ Health Scoring
 ▼
 Alerts + Dashboard
 
-yaml
-Copy code
 
----
 
 ## 🔁 System Flow
 
 Collect Data → Store Data → Train Model → Detect Drift → Predict Risk → Send Alerts → Visualize Health
 
-yaml
-Copy code
-
----
+--
 
 ## ⚙ How the System Works
 
